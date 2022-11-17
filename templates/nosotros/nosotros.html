@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block  slider %}
+    <div class="view">
+        <!--Video source-->
+        <video style="width: 100%!important;" class="video-fluid" autoplay loop muted>
+            <source src="{{ video.file.url }}" type="video/mp4"/>
+        </video>
+    </div>
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'core/css/alertify.core.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.default.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.min.css' %}">
+    <link rel="stylesheet" href="{% static '../static/home/home.css' %}">
+{% endblock %}
+{% block context %}
+    <main id="main">
+        <!-- ======= About Us Section ======= -->
+        <section style="background-color: white!important;" id="about2" class="about2">
+            <div class="container-fluid" data-aos="fade-up">
+                <!-- DESCRIPCIÓN -->
+                <div class="container-fluid" id="container_descripcion" style="padding-bottom: 30px; padding-top: 30px">
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h2 class="titulo_encabezado">Mapa Interactivo de la Educación de Nicaragua</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-12">
+                        <div class="text-justify">
+                            <p class="descripcion_cuerpo justificar_texto" style="text-justify: inter-word">
+                                El Gobierno de Reconciliación y Unidad Nacional, brinda el acceso a la educación como un derecho constitucional a todos/as los/as nicaragüenses, declarando el Decreto Ejecutivo N°116 (sustentado en el Acuerdo Ministerial No.18-2007 del MINED), donde se establece la eliminación de la política de cobros y privatización encubierta de la educación pública, restableciendo su gratuidad desde el año 2007.
+                            </p>
+                            <p class="descripcion_cuerpo justificar_texto" style="text-justify: inter-word">
+                                A la fecha, la educación en Nicaragua avanza de manera transcendental, impulsando líneas y ejes estratégicos para la mejora continua de la calidad educativa y la transformación evolutiva, trabajando de manera conjunta desde la Comisión Nacional de Educación – CNE conformada por: Ministerio de Educación - MINED, Subsistema Educativo Autonómico Regional - SEAR, Tecnológico Nacional – INATEC y el Consejo Nacional de Universidades - CNU.
+                            </p>
+                            <p class="descripcion_cuerpo justificar_texto" style="text-justify: inter-word">
+                               Este Mapa Interactivo de la Educación surge por voluntad política del Gobierno de Nicaragua que corresponde al Plan Nacional de Lucha contra la Pobreza y para el Desarrollo Humano 2022-2026, el cual permite ubicar por departamento y municipios los centros y sedes de los subsistemas educativos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Us Section -->
+        <section>
+            {% if videoNosotros %}
+                <section id="aboutus" class="" style="padding-top: 1.5rem; padding-bottom: 1.5rem">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="{{ videoNosotros }}"
+                                            allowfullscreen title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        </section>
+        <section style="margin-top: 70px; margin-bottom: 70px" id="about2" class="about2">
+            {% include 'home/logo_subsistemas.html' %}
+        </section>
+    </main>
+{% endblock %}

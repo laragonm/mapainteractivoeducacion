@@ -1,0 +1,132 @@
+<!-- NOTICIAS/EVENTOS -->
+
+<section style="margin-top: 50px; margin-bottom: 150px">
+    <div class="container-fluid" data-aos="fade-in">
+        <div class="row" style="padding-left:5%;padding-right:5%">
+
+            <!-- NOTICIAS-->
+            {% if mined or inatec or  cnu %}
+                <div class="col-md-8">
+                    <div class="row linea"><H3 CLASS="encabezado_categoria">NOTICIAS</H3>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        {% if mined %}
+                            <div class="col-md-4 card_noticia">
+                                <div class="card" style="width:auto;">
+                                    {% if mined.imagen %}
+                                        <img style="height: 230px" class="card-img-top img-fluid"
+                                             src="{{ mined.imagen.url }}">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: black">{{ mined.titulo }}</h5>
+                                        <span class="etiqueta_sub_sistema"> MINED </span>
+                                        <p class="card-text">{{ mined.descripcion|safe }}</p>
+                                        <a target="_blank" href="{{ mined.link }}" class="btn btn-success btn-sm bg-success">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if inatec %}
+                            <div class="col-md-4 card_noticia">
+                                <div class="card" style="width: auto;">
+                                    {% if inatec.imagen %}
+                                        <img class="w-100 h-100" src="{{ inatec.imagen.url }}">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: black"> {{ inatec.titulo }} </h5>
+                                        <span class="etiqueta_sub_sistema"> INATEC </span>
+                                        <p class="card-text">{{ inatec.descripcion|safe }}</p>
+                                        <a target="_blank" href="{{ inatec.link }}" class="btn btn-success btn-sm bg-success">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if cnu %}
+                            <div class="col-md-4 card_noticia">
+                                <div class="card" style="width: auto">
+                                    <img class="card-img-top" src="{{ cnu.imagen.url }}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: black">{{ cnu.titulo }}</h5>
+                                        <span class="etiqueta_sub_sistema"> CNU </span>
+                                        <p class="card-text">{{ cnu.descripcion|safe }} </p>
+                                        <a target="_blank" href="{{ cnu.link }}" class="btn btn-success btn-sm bg-success">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+
+            <!-- EVENTOS-->
+            {% if minede or inatece or  cnue %}
+                <div class="col-md-4">
+                    <div class="row linea encabezado_eventos"><H3 CLASS="encabezado_categoria">EVENTOS </H3>
+                    </div>
+                <br>
+                    {% if minede %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a target="_blank" href="{{ minede.0.link }}">
+                                    <img class="card-img-top hover_eventos" src="{{ minede.0.imagen.url }}"
+                                         alt="Card image cap">
+                                </a>
+                            </div>
+
+                            <div class="col-md-6">
+                                 {% if minede.1 %}
+                                    <a target="_blank" href="{{ minede.1.link }}">
+                                        <img class="card-img-top hover_eventos" src="{{ minede.1.imagen.url }}"
+                                             alt="Card image cap">
+                                    </a>
+                                {%endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <br>
+                    {% if inatece %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a target="_blank" href="{{ inatece.0.link }}">
+                                    <img class="card-img-top hover_eventos" src="{{ inatece.0.imagen.url }}"
+                                         alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                 {% if inatece.1 %}
+                                    <a target="_blank" href="{{ inatece.1.link }}">
+                                        <img class="card-img-top hover_eventos" src="{{ inatece.1.imagen.url }}"
+                                             alt="Card image cap">
+                                    </a>
+                                 {%endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <hr>
+                    {% if cnue %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a target="_blank" href="{{ cnue.0.link }}">
+                                    <img class="card-img-top hover_eventos" src="{{ cnue.0.imagen.url }}"
+                                         alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                {% if cnue.1 %}
+                                <a target="_blank" href="{{ cnue.1.link }}">
+                                    <img class="card-img-top hover_eventos" src="{{ cnue.1.imagen.url }}"
+                                         alt="Card image cap">
+                                </a>
+                                {%endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>

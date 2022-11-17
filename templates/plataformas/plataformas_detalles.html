@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block  slider %}
+    <section id="main-banner-area">
+        {% if plataformas.banner %}
+            <img class="img-movil card-img-top" src="{{ plataformas.banner.url }}" alt="Card image cap">
+        {% endif %}
+    </section>
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'core/css/alertify.core.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.default.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.min.css' %}">
+    <link rel="stylesheet" href="{% static '../static/home/home.css' %}">
+{% endblock %}
+{% block context %}
+    <main id="main">
+        <!-- ======= About Us Section ======= -->
+        <section style="background-color: white!important;" id="plataformasPage" class="plataformasPage">
+            <div class="container-fluid" data-aos="fade-up">
+                <!-- DESCRIPCIÓN -->
+                <div class="container-fluid" id="container_descripcion" style="padding-bottom: 30px; padding-top: 30px">
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h1 class="titulo_encabezado">{{ plataformas.nombre }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-12">
+                        <div class="descripcion_cuerpo">
+                            <br>
+                            {{ plataformas.descripcion|safe }}
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <br>
+                        {% if plataformas.url %}
+                            <a target="_blank" href="{{ plataformas.url }}">
+                                <img class="card-img-top hover_eventos" src="{% static 'core/img/boton_ir_al_sitio.svg' %}"
+                                     alt="Card image cap" style="width: 300px">
+                            </a>
+                        {% endif %}
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Us Section -->
+        <section style="margin-top: 70px; margin-bottom: 70px" id="about2" class="about2">
+            {% include 'home/logo_subsistemas.html' %}
+        </section>
+    </main>
+{% endblock %}

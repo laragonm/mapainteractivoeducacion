@@ -1,0 +1,174 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block  slider %}
+    <section id="main-banner-area">
+        <img class="img-movil card-img-top" src="{{ patrimonio.banner.url }}" alt="Card image cap">
+    </section>
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'core/css/alertify.core.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.default.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/alertify.min.css' %}">
+    <link rel="stylesheet" href="{% static '../static/home/home.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+{% endblock %}
+{% block context %}
+    <main id="main">
+        <!-- ======= About Us Section ======= -->
+        <section style="background-color: white!important;" id="patrimoniosPage" class="patrimoniosPage">
+            <div class="container-fluid" data-aos="fade-up">
+                <!-- DESCRIPCIÓN -->
+                <div class="container-fluid" id="container_descripcion" style="padding-bottom: 30px; padding-top: 30px">
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <h2 class="titulo_encabezado">{{ patrimonio.id_clasificacion.nombre }}</h2>
+                                <h1 class="titulo_encabezado">{{ patrimonio.nombre }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-12">
+                        <div class="descripcion_cuerpo">
+                            <br>
+                            {{ patrimonio.descripcion|safe }}
+                            <br>
+                        </div>
+                        <div>
+                            <h2 class="descripcion_cuerpo">Sítios web:</h2>
+                            <br>
+                            {% if patrimonio.url_unesco %}
+                                <a href='{{ patrimonio.url_unesco }}' target='_blank'
+                                   style='color: black'><u style='color: black'>{{ patrimonio.url_unesco }}</u></a>
+                            {% endif %}
+                            <br>
+                            {% if patrimonio.link_2 %}
+                                <a href='{{ patrimonio.link_2 }}' target='_blank'
+                                   style='color: black'><u style='color: black'>{{ patrimonio.link_2 }}</u></a>
+                            {% endif %}
+                            <br>
+                            {% if patrimonio.link_3 %}
+                                <a href='{{ patrimonio.link_3 }}' target='_blank'
+                                   style='color: black'><u style='color: black'>{{ patrimonio.link_3 }}</u></a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Us Section -->
+        <section>
+            <div class="col-md-10 offset-1 text-center mapa">
+                <div id="map" style="width:100hw; height: 70vh; position: initial !important"></div>
+            </div>
+        </section>
+        <section style="margin-top: 70px; margin-bottom: 70px" id="about2" class="about2">
+            {% include 'home/logo_subsistemas.html' %}
+        </section>
+    </main>
+
+    <style>
+        .mapa {
+            border: 7px solid #105b83;
+            -moz-border-radius: 7px;
+            -webkit-border-radius: 7px;
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'home/home.js' %}"></script>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="{% static 'map/functionSubsistemaMapa.js' %}"></script>
+
+    <script>
+        var mapMarkers = [];
+        urlImagePic = "{% static 'admin/img/pin_inatec_mapa.svg' %}";
+
+        var icono = L.icon({
+            iconUrl: urlImagePic,
+            iconSize: [50, 50],
+            iconAnchor: [22, 94]
+        });
+
+        $(document).ready(function () {
+            csrf_token = Cookies.get('csrftoken');
+            getLocationReserva();
+            getLocationMunicpios()
+        });
+
+        function getLocationReserva() {
+            let latitud = {{ patrimonio.latitud }};
+            let longitud = {{ patrimonio.longitud }};
+            let latitud_2 = {{ patrimonio.latitud_2 }};
+            let longitud_2 = {{ patrimonio.longitud_2 }};
+
+            /*punto = L.marker(L.latLng(latitud, longitud), {
+                radius: 10,
+                color: "black",
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.0,
+                icon: icono
+            }).addTo(map);*/
+
+            puntoUno = new L.LatLng(latitud, longitud);
+            puntoDos = new L.LatLng(latitud_2, longitud_2);
+            bounds = new L.LatLngBounds(puntoUno, puntoDos);
+            map.fitBounds(bounds);
+
+        };
+
+        function getLocationMunicpios() {
+            /*if (punto != null) {
+                map.removeLayer(punto);
+            }
+
+            if (mapMarkers.length > 0) {
+                for (var i = 0; i < mapMarkers.length; i++) {
+                    map.removeLayer(this.mapMarkers[i]);
+                }
+            }*/
+
+            let data = {};
+            data['id_patrimonio'] = {{ patrimonio.pk }};
+            $.ajax({
+                url: '{% url 'home:municipios_general_json' %}',
+                type: 'POST',
+                dataType: 'JSON',
+                data: data,
+                success: function (response) {
+                    response.forEach(function (item) {
+                        latitud = item.latitud;
+                        longitud = item.longitud;
+
+                        punto = L.marker(L.latLng(latitud, longitud), {
+                            radius: 10,
+                            color: "black",
+                            weight: 2,
+                            opacity: 1,
+                            fillOpacity: 0.0,
+                            icon: icono
+                        }).addTo(map);
+
+                        /*punto.on('mouseover', function (e) {
+                            this.openPopup();
+                        });*/
+
+                        /*punto.on('mouseout', function (e) {
+                            this.closePopup();
+                        });*/
+
+                        mapMarkers.push(punto);
+                    }, this);
+                }
+            });
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,617 @@
+{% load static %}
+
+        <!-- ESTADÍSTICAS-->
+        <div class="col-sm-10 offset-1">
+            <ul class="nav nav-pills mb-3 justify-content-center nav-tabs" id="pills-tab" role="tablist" style="margin-top:20px; background-color:#f1f1f1">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                       aria-controls="pills-home" aria-selected="true">GENERAL</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                       aria-controls="pills-profile" aria-selected="false">MINED</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                       aria-controls="pills-contact" aria-selected="false">INATEC</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2" role="tab"
+                       aria-controls="pills-contact2" aria-selected="false">CNU</a>
+                </li>
+                {% if inicio %}
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3" role="tab"
+                       aria-controls="pills-contact2" aria-selected="false">COSTA CARIBE</a>
+                </li>
+               {% endif %}
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+
+                <!-- GENERAL -->
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                     aria-labelledby="pills-home-tab">
+                    <div  class="row">
+                        <div class="gr gr3 col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneralGeneral"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                             <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGenero"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                             <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsUrbanoRural"></canvas>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="gr gr3 col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneralEgreso"></canvas>
+                        </div>
+                         <div class="gr col-sm-4">
+                             <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneroEgreso"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                           <img style="height: 15%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsUrbanoRuralEgreso"></canvas>
+                        </div>
+                    </div>
+                    <br>
+                    <div  class="row">
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneralCentrosEducativos"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                             <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneralPoblacionDocente"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                             <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneralDocentesGenero"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- MINED -->
+                <div  class="tab-pane fade" id="pills-profile" role="tabpanel"
+                     aria-labelledby="pills-profile-tab">
+                     {% if inicio %}
+                          <a{% if subsistem.1.pdf  %}
+                             href="{{subsistem.1.pdf.url}}" download
+                           {% endif %}>
+                            <img class="hover_eventos botton-pdf" title="Descargar Ofertas" style="height: 15%!important; width: 15%; margin-left: 45%" src="{% static 'core/img/Oferta_Academica.svg' %}"/> </a>
+                     {% endif %}
+                    <div class="row">
+                        <div class="gr col-sm-4">
+                              <img style="height: 15%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsMinedGeneral"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                               <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsMinedGenero"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                             <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsMinedUrbanoRural"></canvas>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div class="gr gr3 col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneralEgresoMined"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneroEgresoMined"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                           <img style="height: 15%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsUrbanoRuralEgresoMined"></canvas>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+
+
+
+                            <canvas class="charts_canvas" id="chartsMinedCentrosEducativos"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsMinedPoblacionDocente"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsMinedDocentesGenero"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- INATEC -->
+                <div  class="tab-pane fade" id="pills-contact" role="tabpanel"
+                     aria-labelledby="pills-contact-tab">
+                     {% if inicio %}
+                          <a{% if subsistem.0.pdf  %}
+                             href="{{subsistem.0.pdf.url}}" download
+                           {% endif %}>
+                            <img class="hover_eventos botton-pdf" title="Descargar Ofertas" style="height: 15%!important; width: 15%; margin-left: 45%" src="{% static 'core/img/Oferta_Academica.svg' %}"/> </a>
+                     {% endif %}
+                     <div class="row">
+                        <div class="gr gr3 col-sm-4">
+                            <img style="height: 12%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                            <ul class="nav nav-pills mb-3 justify-content-center nav-tabs" id="pills-tab" role="tablist" style="margin-top:20px; background-color:#f1f1f1">
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link active" id="pills-generalmatriculainatec-tab" data-toggle="pill" href="#pills-generalmatriculainatec" role="tab"
+                                        aria-controls="pills-generalmatriculainatec" aria-selected="true">GENERAL</a>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link" id="pills-sectormatriculainatec-tab" data-toggle="pill" href="#pills-sectormatriculainatec" role="tab"
+                                        aria-controls="pills-sectormatriculainatec" aria-selected="false">SECTOR</a>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link" id="pills-modalidadmatriculainatec-tab" data-toggle="pill" href="#pills-modalidadmatriculainatec" role="tab"
+                                        aria-controls="pills-modalidadmatriculainatec" aria-selected="false">MODALIDAD</a>
+                                 </li>
+
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                   <!-- GENERAL-->
+                                   <div class="tab-pane fade show active" id="pills-generalmatriculainatec" role="tabpanel"
+                                        aria-labelledby="pills-generalmatriculainatec-tab">
+                                       <canvas class="charts_canvas" id="chartsInatecGeneral"></canvas>
+                                   </div>
+                                   <!-- SECTOR -->
+                                   <div  class="tab-pane fade" id="pills-sectormatriculainatec" role="tabpanel"
+                                        aria-labelledby="pills-sectormatriculainatec-tab">
+                                         <canvas class="charts_canvas" id="chartsInatecsector"></canvas>
+                                  </div>
+                                   <!-- MODALIDAD -->
+                                   <div  class="tab-pane fade" id="pills-modalidadmatriculainatec" role="tabpanel"
+                                        aria-labelledby="pills-modalidadmatriculainatec-tab">
+                                        <canvas class="charts_canvas" id="chartsInatecmodalidad"></canvas>
+                                   </div>
+
+                              </div>
+                        </div>
+                        <div class=" gr col-sm-4">
+                               <img style="height: 12%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsInatecGenero"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                             <img style="height: 12%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsInatecUrbanoRural"></canvas>
+                        </div>
+                    </div>
+                     <div  class="row">
+                        <div class="gr gr3 col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneralEgresoInatec"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneroEgresoInatec"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsUrbanoRuralEgresoInatec"></canvas>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+                            <ul class="nav nav-pills  justify-content-center nav-tabs" id="pills-tab" role="tablist" style=" background-color:#f1f1f1">
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link active" id="pills-centrospublicosinatec-tab" data-toggle="pill" href="#pills-centrospublicosinatec" role="tab"
+                                        aria-controls="pills-centrospublicosinatec" aria-selected="true">PÚBLICO</a>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link" id="pills-centrosacreditadosinatec-tab" data-toggle="pill" href="#pills-centrosacreditadosinatec" role="tab"
+                                        aria-controls="pills-centrosacreditadosinatec" aria-selected="false">PRIVADO/ACREDITADO</a>
+                                 </li>
+
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                   <!-- PUBLICO-->
+                                   <div class="tab-pane fade show active" id="pills-centrospublicosinatec" role="tabpanel"
+                                        aria-labelledby="pills-centrospublicosinatec-tab">
+                                       <canvas class="charts_canvas" id="chartsInatecCentrosEducativos"></canvas>
+                                   </div>
+                                   <!-- ACREDITADO -->
+                                   <div  class="tab-pane fade" id="pills-centrosacreditadosinatec" role="tabpanel"
+                                        aria-labelledby="pills-centrosacreditadosinatec-tab">
+                                       <canvas class="charts_canvas" id="chartsInatecCentrosEducativosAcreditado"></canvas>
+                                  </div>
+
+                              </div>
+                        </div>
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsInatecPoblacionDocente"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsInatecDocentesGenero"></canvas>
+                        </div>
+                    </div>
+               </div>
+                <!-- CNU -->
+                <div  class="tab-pane fade" id="pills-contact2" role="tabpanel"
+                     aria-labelledby="pills-contact2-tab">
+                      {% if inicio %}
+                           <a{% if subsistem.2.pdf  %}
+                              href="{{subsistem.2.pdf.url}}" download
+                           {% endif %}>
+                            <img class="hover_eventos botton-pdf" title="Descargar Ofertas" style="height: 15%!important; width: 15%; margin-left: 45%" src="{% static 'core/img/Oferta_Academica.svg' %}"/> </a>
+                     {% endif %}
+                     <div class="row">
+                        <div class="gr col-sm-4">
+                              <img style="height: 15%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsCnuGeneral"></canvas>
+                        </div>
+                        <div class="gr col-sm-4">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsCnuGenero"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                            <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsCnuUrbanoRural"></canvas>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="gr gr3 col-sm-4">
+                            <img style="height: 12%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+
+                            <ul class="nav nav-pills mb-3 justify-content-center nav-tabs" id="pills-tab" role="tablist" style="margin-top:20px; background-color:#f1f1f1">
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link active" id="pills-egresadoCnuGneral-tab" data-toggle="pill" href="#pills-egresadoCnuGneral" role="tab"
+                                        aria-controls="pills-egresadoCnuGneral" aria-selected="true">GENERAL</a>
+                                 </li>
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link" id="pills-becaCnu-tab" data-toggle="pill" href="#pills-becaCnu" role="tab"
+                                        aria-controls="pills-becaCnu" aria-selected="false">BECAS</a>
+                                 </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                   <!-- GENERAL-->
+                                   <div class="tab-pane fade show active" id="pills-egresadoCnuGneral" role="tabpanel"
+                                        aria-labelledby="pills-egresadoCnuGneral-tab">
+                                       <canvas class="charts_canvas" id="chartsGeneralEgresoCnu"></canvas>
+                                   </div>
+                                   <!-- BECAS -->
+                                   <div  class="tab-pane fade" id="pills-becaCnu" role="tabpanel"
+                                        aria-labelledby="pills-becaCnu-tab">
+                                         <canvas class="charts_canvas" id="chartsGeneralBecasCnu"></canvas>
+                                  </div>
+
+                              </div>
+
+                        </div>
+                        <div class="gr col-sm-4">
+                             <img style="height: 12%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsGeneroEgresoCnu"></canvas>
+                        </div>
+                        <div class="gr gr2 col-sm-2 offset-sm-1">
+                             <img style="height: 12%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                            <canvas class="charts_canvas" id="chartsUrbanoRuralEgresoCnu"></canvas>
+                        </div>
+                    </div>
+                     <div class="row">
+
+                            <div class="gr col-sm-4">
+                                  <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+                                <canvas class="charts_canvas" id="chartsCnuCentrosEducativos"></canvas>
+                            </div>
+
+                            <div class="gr col-sm-4">
+                                <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                                <canvas class="charts_canvas" id="chartsCnuPoblacionDocente"></canvas>
+                            </div>
+                            <div class="gr col-sm-4">
+                                <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                                <canvas class="charts_canvas" id="chartsCnuDocentesGenero"></canvas>
+                            </div>
+
+                    </div>
+                </div>
+
+                 {% if inicio %}
+                 <!-- COSTA CARIBE -->
+                     <div  class="tab-pane fade" id="pills-contact3" role="tabpanel"
+                         aria-labelledby="pills-contact3-tab">
+
+                       <ul class="nav nav-pills mb-3 justify-content-center nav-tabs" id="pills-tab" role="tablist" style="margin-top:20px; background-color:#f1f1f1">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="pills-generalcc-tab" data-toggle="pill" href="#pills-generalcc" role="tab"
+                                   aria-controls="pills-generalcc" aria-selected="true">GENERAL</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-minedcc-tab" data-toggle="pill" href="#pills-minedcc" role="tab"
+                                   aria-controls="pills-minedcc" aria-selected="false">MINED</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-inateccc-tab" data-toggle="pill" href="#pills-inateccc" role="tab"
+                                   aria-controls="pills-inateccc" aria-selected="false">INATEC</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-cnucc-tab" data-toggle="pill" href="#pills-cnucc" role="tab"
+                                   aria-controls="pills-cnucc" aria-selected="false">CNU</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <!-- GENERAL COSTA CARIBE-->
+                            <div class="tab-pane fade show active" id="pills-generalcc" role="tabpanel"
+                                 aria-labelledby="pills-generalcc-tab">
+                                <div  class="row">
+                                <div class="gr col-sm-4">
+                                    <img style="height: 15%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                                    <canvas class="charts_canvas" id="chartsGeneralcc"></canvas>
+                                </div>
+                                <div class="gr col-sm-4">
+                                     <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                                    <canvas class="charts_canvas" id="chartsGenerocc"></canvas>
+                                </div>
+                                <div class="gr gr2 col-sm-2 offset-sm-1">
+                                     <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                                    <canvas class="charts_canvas" id="chartsUrbanoRuralcc"></canvas>
+                                </div>
+                             </div>
+                                <br>
+                                <div  class="row">
+                                    <div class="gr gr3 col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneralEgresocc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4 ">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneroEgresocc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-2 offset-sm-1">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsUrbanoRuralEgresocc"></canvas>
+                                    </div>
+                                </div>
+                                <br>
+                                <div  class="row">
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneralCentrosEducativoscc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneralPoblacionDocentecc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneralDocentesGenerocc"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- MINED COSTA CARIBE-->
+                            <div  class="tab-pane fade" id="pills-minedcc" role="tabpanel"
+                                 aria-labelledby="pills-minedcc-tab">
+                                <div class="row">
+                                    <div class="gr col-sm-4">
+                                          <img style="height: 15%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsMinedGeneralcc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                           <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsMinedGenerocc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-2 offset-sm-1">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsMinedUrbanoRuralcc"></canvas>
+                                    </div>
+                                </div>
+                                <div  class="row">
+                                    <div class="gr gr3 col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneralEgresoMinedcc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneroEgresoMinedcc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-2 offset-sm-1">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsUrbanoRuralEgresoMinedcc"></canvas>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsMinedCentrosEducativoscc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsMinedPoblacionDocentecc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsMinedDocentesGenerocc"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- INATEC COSTA CARIBE -->
+                            <div  class="tab-pane fade" id="pills-inateccc" role="tabpanel"
+                                 aria-labelledby="pills-inateccc-tab">
+                                 <div class="row">
+                                    <div class="gr col-sm-4">
+                                          <img style="height: 12%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                                          <ul class="nav nav-pills mb-3 justify-content-center nav-tabs" id="pills-tab" role="tablist" style="margin-top:20px; background-color:#f1f1f1">
+                                             <li class="nav-item" role="presentation">
+                                                 <a class="nav-link active" id="pills-generalmatriculainateccc-tab" data-toggle="pill" href="#pills-generalmatriculainateccc" role="tab"
+                                                    aria-controls="pills-generalmatriculainatec" aria-selected="true">GENERAL</a>
+                                             </li>
+                                             <li class="nav-item" role="presentation">
+                                                 <a class="nav-link" id="pills-sectormatriculainateccc-tab" data-toggle="pill" href="#pills-sectormatriculainateccc" role="tab"
+                                                    aria-controls="pills-sectormatriculainatec" aria-selected="false">SECTOR</a>
+                                             </li>
+                                             <li class="nav-item" role="presentation">
+                                                 <a class="nav-link" id="pills-modalidadmatriculainateccc-tab" data-toggle="pill" href="#pills-modalidadmatriculainateccc" role="tab"
+                                                    aria-controls="pills-modalidadmatriculainateccc" aria-selected="false">MODALIDAD</a>
+                                             </li>
+
+                                        </ul>
+                                          <div class="tab-content" id="pills-tabContent">
+                                               <!-- GENERAL-->
+                                               <div class="tab-pane fade show active" id="pills-generalmatriculainateccc" role="tabpanel"
+                                                    aria-labelledby="pills-generalmatriculainateccc-tab">
+                                                   <canvas class="charts_canvas" id="chartsInatecGeneralcc"></canvas>
+                                               </div>
+                                               <!-- SECTOR -->
+                                               <div  class="tab-pane fade" id="pills-sectormatriculainateccc" role="tabpanel"
+                                                    aria-labelledby="pills-sectormatriculainateccc-tab">
+                                                     <canvas class="charts_canvas" id="chartsInatecsectorcc"></canvas>
+                                              </div>
+                                               <!-- MODALIDAD -->
+                                               <div  class="tab-pane fade" id="pills-modalidadmatriculainateccc" role="tabpanel"
+                                                    aria-labelledby="pills-modalidadmatriculainateccc-tab">
+                                                    <canvas class="charts_canvas" id="chartsInatecmodalidadcc"></canvas>
+                                               </div>
+
+                                          </div>
+                                    </div>
+                                    <div class=" gr col-sm-4">
+                                           <img style="height: 12%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsInatecGenerocc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-2 offset-sm-1">
+                                         <img style="height: 12%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsInatecUrbanoRuralcc"></canvas>
+                                    </div>
+                                </div>
+                                 <div style="background-color: #efefef" class="row">
+                                    <div class="gr gr3 col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneralEgresoInateccc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneroEgresoInateccc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-2 offset-sm-1">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsUrbanoRuralEgresoInateccc"></canvas>
+                                    </div>
+                                </div>
+                                 <div  class="row">
+                                    <div class="gr col-sm-4">
+                                           <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+                                            <ul class="nav nav-pills justify-content-center nav-tabs" id="pills-tab" role="tablist" style="background-color:#f1f1f1">
+                                                 <li class="nav-item" role="presentation">
+                                                     <a class="nav-link active" id="pills-centrospublicosinateccc-tab" data-toggle="pill" href="#pills-centrospublicosinateccc" role="tab"
+                                                        aria-controls="pills-centrospublicosinateccc" aria-selected="true">PÚBLICO</a>
+                                                 </li>
+                                                 <li class="nav-item" role="presentation">
+                                                     <a class="nav-link" id="pills-centrosacreditadosinateccc-tab" data-toggle="pill" href="#pills-centrosacreditadosinateccc" role="tab"
+                                                        aria-controls="pills-centrosacreditadosinateccc" aria-selected="false">PRIVADO/ACREDITADO</a>
+                                                 </li>
+
+                                            </ul>
+                                            <div class="tab-content" id="pills-tabContent">
+                                                   <!-- PUBLICO-->
+                                                   <div class="tab-pane fade show active" id="pills-centrospublicosinateccc" role="tabpanel"
+                                                        aria-labelledby="pills-centrospublicosinateccc-tab">
+                                                       <canvas class="charts_canvas" id="chartsInatecCentrosEducativoscc"></canvas>
+                                                   </div>
+                                                   <!-- ACREDITADO -->
+                                                   <div  class="tab-pane fade" id="pills-centrosacreditadosinateccc" role="tabpanel"
+                                                        aria-labelledby="pills-centrosacreditadosinateccc-tab">
+                                                       <canvas class="charts_canvas" id="chartsInatecCentrosEducativosAcreditadocc"></canvas>
+                                                  </div>
+
+                                              </div>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsInatecPoblacionDocentecc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsInatecDocentesGenerocc"></canvas>
+                                    </div>
+                                </div>
+                           </div>
+                            <!-- CNU COSTA CARIBE -->
+                            <div  class="tab-pane fade" id="pills-cnucc" role="tabpanel"
+                                 aria-labelledby="pills-cnucc-tab">
+                                 <div class="row">
+                                    <div class="gr col-sm-4">
+                                          <img style="height: 15%!important;" src="{% static 'core/img/icono_p_estudiantes.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsCnuGeneralcc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_genero.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsCnuGenerocc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-2 offset-sm-1">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_matricula_sector.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsCnuUrbanoRuralcc"></canvas>
+                                    </div>
+                                </div>
+                                 <div  class="row">
+                                    <div class="gr gr3 col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante.svg' %}"/>
+
+                                           <ul class="nav nav-pills mb-3 justify-content-center nav-tabs" id="pills-tab" role="tablist" style="margin-top:20px; background-color:#f1f1f1">
+                                                 <li class="nav-item" role="presentation">
+                                                     <a class="nav-link active" id="pills-egresadoCnuGneralCC-tab" data-toggle="pill" href="#pills-egresadoCnuGneralCC" role="tab"
+                                                        aria-controls="pills-egresadoCnuGneralCC" aria-selected="true">GENERAL</a>
+                                                 </li>
+                                                 <li class="nav-item" role="presentation">
+                                                     <a class="nav-link" id="pills-becaCnuCC-tab" data-toggle="pill" href="#pills-becaCnuCC" role="tab"
+                                                        aria-controls="pills-becaCnuCC" aria-selected="false">BECAS</a>
+                                                 </li>
+                                            </ul>
+                                           <div class="tab-content" id="pills-tabContent">
+                                           <!-- GENERAL-->
+                                           <div class="tab-pane fade show active" id="pills-egresadoCnuGneralCC" role="tabpanel"
+                                                aria-labelledby="pills-egresadoCnuGneralCC-tab">
+                                              <canvas class="charts_canvas" id="chartsGeneralEgresoCnucc"></canvas>
+                                           </div>
+                                           <!-- BECAS -->
+                                           <div  class="tab-pane fade" id="pills-becaCnuCC" role="tabpanel"
+                                                aria-labelledby="pills-becaCnuCC-tab">
+                                                 <canvas class="charts_canvas" id="chartsGeneralBecasCnucc"></canvas>
+                                          </div>
+
+                                            </div>
+
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_Estudiante_sexo.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsGeneroEgresoCnucc"></canvas>
+                                    </div>
+                                    <div class="gr gr2 col-sm-2 offset-sm-1">
+                                         <img style="height: 15%!important;" src="{% static 'core/img/Egreso_zona.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsUrbanoRuralEgresoCnucc"></canvas>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="gr col-sm-4">
+                                          <img style="height: 15%!important;" src="{% static 'core/img/icono_ct_educacion.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsCnuCentrosEducativoscc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_p_departamento-docente.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsCnuPoblacionDocentecc"></canvas>
+                                    </div>
+                                    <div class="gr col-sm-4">
+                                        <img style="height: 15%!important;" src="{% static 'core/img/icono_p_docentes_g.svg' %}"/>
+                                        <canvas class="charts_canvas" id="chartsCnuDocentesGenerocc"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                       </div>
+                     </div>
+                 {% endif %}
+
+            </div>
+        </div>

@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static thumbnail %}
+{% block  slider %}
+    <section id="main-banner-area">
+        <img class="img-movil card-img-top" src="{{ bannerPat.banner_patrimonio.url }}" alt="Card image cap">
+        {# <img class="card-img-top" src="{% static 'core/img/prueba.png' %}" alt="Card image cap"> #}
+
+    </section>
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static '../static/home/home.css' %}">
+    <link rel="stylesheet" href="{% static '../static/home/responsive.css' %}">
+     <link rel="stylesheet" href="{% static '../static/home/custom.css' %}">
+{% endblock %}
+{% block context %}
+    <main id="main">
+         <section style="margin-top: 70px; margin-bottom: 70px" id="about2" class="about2">
+            {% include 'home/logo_subsistemas.html' %}
+        </section>
+         <div class="container-fluid paneles" >
+          <div class="encabezado text-center">
+            <h2 class="titulo_encabezado"><a>PATRIMONIOS DE NICARAGUA RECONOCIDOS POR LA UNESCO</a></h2>
+          </div>
+         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" >
+          {% for patrimonio in patrimonios %}
+              <div style="margin-top: 3%!important;" class="col-xs-12 col-sm-3 col-md-3 panelcolumn " >
+                    <div class="panel">
+                      <div   class="panel-body">
+                        {% thumbnail patrimonio.imagen "351x170" crop="center" as im %}
+                        <a href="/patrimonios-detalles/{{ patrimonio.pk }}"><img  src="{{ im.url }}" alt="{{ oferta.titulo }}" class="img-responsive img-ofertas"> </a>
+                      </div>
+                      <div class="panel-footer">
+                       <a title="Ver mas" href="/patrimonios-detalles/{{ patrimonio.pk }}">
+                           <div class="circle blue">
+                               <i style="" class="fa fa-plus"></i>
+                             </div>
+                       </a>
+                        <h1 style="margin: 3%;" class="titulooferta descripcion_cuerpo"><a href="/patrimonios-detalles/{{ patrimonio.pk }}">{{ patrimonio.id_clasificacion }}<br>{{ patrimonio.nombre }}</a></h1>
+                       <div style="margin: 5%">
+                           <p class="descripcion_lg">{{ patrimonio.descripcion|safe|truncatewords:45 }}</p>
+                       </div>
+                      </div>
+                      <div class="panel-footer2 celeste">
+                        <ul>
+                            {% if patrimonio.id_municipio.count > 0 %}
+                            <li><a class="text-center" href="/patrimonios-detalles/{{ patrimonio.pk }}">{{ patrimonio.id_municipio.count }} Municipios</a></li>
+                            {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+              </div><br>
+          {% endfor %}
+           </div>
+        </div>
+
+    </main>
+
+{% endblock %}

@@ -1,0 +1,336 @@
+{% load static solo_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Mapa Interactivo de Educación">
+    <title>Mapa Interactivo de Educación {% now 'Y' %}</title>
+    <link href="{% static 'core/img/favicon.ico' %}" rel="icon">
+
+    <link rel="stylesheet" href="{% static 'core/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/tooltipster.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/cubeportfolio.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/revolution/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/revolution/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/tipografia.css' %}">
+
+    {# Bloque de estilos - plantilla base #}
+    {% block styles %}
+    {% endblock %}
+
+</head>
+<body>
+<div class="loader">
+    <div class="loader-inner">
+        <div class="cssload-loader"></div>
+    </div>
+</div>
+
+<div id="loader-wrapper">
+    <div id="loader">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square last"></div>
+        <div class="square clear"></div>
+        <div class="square"></div>
+        <div class="square last"></div>
+        <div class="square clear"></div>
+        <div class="square "></div>
+        <div class="square last"></div>
+    </div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+
+{# Menu - plantilla base #}
+<header class="site-header header-with-topbar" id="header">
+    <nav class="navbar navbar-expand-lg transparent-bg static-nav">
+        <div class="container-fluid" style="display: flex; justify-content: center">
+            <div class="row">
+
+
+                <div>
+                    <a style="cursor:auto;" title="Gobierno de Reconciliación y Unidad Nacional" href="{% url 'home:home' %}" class="navbar-brand">
+                        <img src="{% static 'core/img/Logo-Gobierno.svg' %}" alt="" class="logo-default  logo_principal_secundario ">
+                         <img src="{% static 'core/img/Logo-Gobierno.svg' %}" alt="" class="logo-scrolled  logo_principal_secundario">
+                    </a>
+                    <a style="cursor:auto;" title="Gobierno de Reconciliación y Unidad Nacional" href="{% url 'home:home' %}" class="navbar-brand">
+                        <img src="{{ logo.logo_actual.url }}" alt="" class="logo-scrolled  logo_principal">
+                        <img src="{{ logo.logo_actual.url }}" alt="" class="logo-default  logo_principal">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link tipografia_menu menu_border_top" href="{% url 'home:home' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link tipografia_menu menu_border_top" href="{% url 'home:nosotros' %}">Nosotros</a>
+                        </li>
+                       <li class="nav-item">
+                            <a class="nav-link tipografia_menu menu_border_top" href="{% url 'home:plataformas' %}">Plataformas virtuales</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link tipografia_menu menu_border_top" href="{% url 'home:patrimonios' %}">Patrimonios</a>
+                        </li>
+
+                        <li class="nav-item dropdown static">
+                            <a class="nav-link tipografia_menu menu_border_top" href="#"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false"> Sedes &nbsp<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu megamenu text-capitalize">
+
+                                {% for dep in  departamentos %}
+                                    <li><a class="menu-a tipografia_menu" href="{{ dep.url }}">{{ dep.nombre }}</a></li>
+                                {% endfor %}
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown static">
+                            <a class="nav-link tipografia_menu menu_border_top" href="#"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false"> Instituciones &nbsp<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu megamenu text-capitalize">
+                                <li><a class="menu-a tipografia_menu" href="{% url 'home:subsistema_mined' %}">MINED</a>
+                                </li>
+                                <li><a class="menu-a tipografia_menu"
+                                       href="{% url 'home:subsistema_inatec' %}">INATEC</a>
+                                </li>
+                                <li><a class="menu-a tipografia_menu" href="{% url 'home:subsistema_cnu' %}">CNU</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#" class="d-inline-block sidemenu_btn mr-0 d-lg-none" id="sidemenu_toggle">
+                    <span class="bg-dark"></span> <span class="bg-dark"></span> <span class="bg-dark"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="side-menu opacity-0 gradient-bg">
+        <div class="overlay"></div>
+        <div class="inner-wrapper">
+            <span class="btn-close btn-close-no-padding" id="btn_sideNavClose"><i></i><i></i></span>
+            <nav class="side-nav w-100">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:nosotros' %}">Nosotros</a>
+                    </li>
+                   <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:plataformas' %}">Plataformas virtuales</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:patrimonios' %}">Patrimonios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages0">
+                            Sedes <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div id="sideNavPages0" class="collapse sideNavPages">
+
+                            <ul class="text-white navbar-nav mt-2">
+
+                                {% for dep in  departamentos %}
+                                    <li><a class="menu-a tipografia_menu" href="{{ dep.url }}">{{ dep.nombre }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages1">
+                            Instituciones <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div id="sideNavPages1" class="collapse sideNavPages">
+                            <ul class="text-white navbar-nav mt-2">
+                                <li><a href="{% url 'home:subsistema_mined' %}">MINED</a></li>
+                                <li><a href="{% url 'home:subsistema_inatec' %}">INATEC</a></li>
+                                <li><a href="{% url 'home:subsistema_cnu' %}">CNU</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="close_side_menu" class="tooltip"></div>
+</header>
+
+{# Slider dinamico - plantilla base #}
+{% block  slider %}
+
+    <!-- section video-->
+    <div id="view" class="view">
+        <!--Video source-->
+
+    </div>
+    <!--section video--->
+
+
+{% endblock %}
+
+{# Body - plantilla base #}
+{% block context %}
+
+{% endblock %}
+
+{# Footer - plantilla base #}
+<footer id="site-footer" class="bgdark" style=" padding-bottom:15px; background-color: #00aeef">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                <div class="footer_panel">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img id="imgEnVictorias" style="padding-top: 5%;" src="{% static 'core/img/En_Victorias.svg' %}" >
+                            </div>
+                            <div class="col-md-5 primera_fila_top top-movil">
+                                <div class="row fila_footer" style="">
+                                    <div class="col text-center">
+                                        <span class="text-light parrafos text-danger footer_nombre">MAPA INTERACTIVO DE LA EDUCACIÓN EN NICARAGUA</span>
+                                    </div>
+                                 </div>
+                                <div class="row fila_footer row-movil">
+                                    <div class="col-md-3">
+                                        <a class="nav-link"  target="_blank" href="https://www.mined.gob.ni/">
+                                            <span class="text-light parrafos text-danger footer_nombre">MINED</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="nav-link"  target="_blank" href="https://www.mined.gob.ni/">
+                                            <span class="text-light parrafos text-danger footer_nombre">SEAR</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="nav-link"  target="_blank" href="https://www.tecnacional.edu.ni/">
+                                            <span class="text-light parrafos text-danger footer_nombre">INATEC</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="nav-link"  target="_blank" href="https://www.cnu.edu.ni/">
+                                            <span class="text-light parrafos text-danger footer_nombre">CNU</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row fila_footer">
+                                    <div class="col text-center">
+                                        <span class="text-light parrafos text-danger footer_nombre">© Todos los derechos reservados, {% now 'Y' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col">
+                                <img id="img_esperanza" width="60%" src="{{ logo.logo_actual.url }}">
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'core/js/pleaserotate.js' %}"></script>
+<script src="{% static 'core/js/aos.js' %}"></script>
+<script src="{% static 'core/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'core/js/propper.min.js' %}"></script>
+<script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'core/js/jquery.appear.js' %}"></script>
+<script src="{% static 'core/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'core/js/jquery-countTo.min.js' %}"></script>
+<script src="{% static 'core/js/parallaxie.js' %}"></script>
+<script src="{% static 'core/js/jquery.cubeportfolio.min.js' %}"></script>
+<script src="{% static 'core/js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'core/js/tooltipster.min.js' %}"></script>
+<script src="{% static 'core/js/wow.js' %}"></script>
+<script src="{% static 'core/js/revolution/jquery.themepunch.tools.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/jquery.themepunch.revolution.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.actions.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.carousel.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.kenburn.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.migration.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.parallax.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script src="{% static 'core/js/revolution/extensions/revolution.extension.video.min.js' %}"></script>
+<script src="{% static 'core/js/alertify.min.js' %}"></script>
+<script src="{% static 'core/js/functions.min.js' %}"></script>
+<script src="{% static 'core/js/ajax.min.js' %}"></script>
+<script src="{% static 'core/js/popper.min.js' %}"></script>
+<script src="{% static 'core/js/js.cookie.min.js' %}"></script>
+<script src="{% static 'core/js/main.js' %}"></script>
+<script src="{% static 'admin/js/vendor/select2/select2.full.min.js' %}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W1CTRY5P5B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W1CTRY5P5B');
+</script>
+
+{# Se inicializa plugins AOS, para animaciones de carga y scroll #}
+<script>
+    AOS.init({
+        mirror: true
+    });
+    var PleaseRotateOptions = {
+        startOnPageLoad: true,
+        onHide: function () {
+        },
+        onShow: function () {
+        },
+        forcePortrait: false,
+        message: "Por favor gire su Dispositivo",
+        subMessage: "(o haga clic para continuar)",
+        allowClickBypass: true,
+        onlyMobile: true,
+        zIndex: 1000,
+        iconNode: null
+    };
+
+         /** Se valida que sea dispositivo movil o computadora*/
+         $(document).ready(function () {
+         //sI ES MOVIL
+         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+              var video='<video style="width: 100%!important;" class="video-fluid" autoplay loop muted><source src="{{ video.file2.url }}" type="video/mp4"/></video>'
+                  $('#view').html(video);
+         }
+         else {
+                var video='<video style="width: 100%!important;" class="video-fluid" autoplay loop muted><source src="{{ video.file.url }}" type="video/mp4"/></video>'
+               $('#view').html(video);
+         }
+     });
+</script>
+
+
+{# Bloque script - plantilla base #}
+{% block scripts %}
+
+
+{% endblock %}
+
+</body>
+</html>

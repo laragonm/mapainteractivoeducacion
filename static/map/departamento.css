@@ -1,0 +1,341 @@
+
+    .flotando {
+    position: fixed;
+    background: white;
+    display: block;
+    top: 101px;
+    background-color: white;
+}
+
+a{
+    cursor: pointer;
+}
+.nav-tabs {
+    width: 100%;
+    text-align: center;
+}
+
+    .nav-tabs > li {
+        float: none;
+        display: inline-block;
+    }
+
+
+.viewDepartamento {
+   display: block;
+}
+
+.viewMunicipios {
+    display: block;
+}
+
+.botonesNavegacion {
+    text-align:right;
+    margin-top:150px;
+    margin-right:20px;
+}
+
+.marcoDibujoMunicipios{
+    max-width:800px;
+    max-height:800px;
+}
+
+.Centrarlienzo {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.logoMined{
+    height:50px;
+    width:120px;
+}
+
+.logoGob {
+    height: 60px;
+    width: 120px;
+}
+
+.logoCNU {
+    height: 60px;
+    width: 180px;
+}
+
+.lnkPaginaPrincipal{
+    display:block;
+}
+
+.tituloBusquedaInteractiva {
+   /* display:block;*/
+   font-size:1em;
+}
+
+.box {
+    display:block;
+    max-height:900px;
+}
+
+.txtBtn{
+    font-size:16px;
+}
+
+/*Introduccion del Mapa*/
+
+.intro {
+    color: dimgrey;
+    max-width: 350px;
+    text-align: justify;
+    margin-top: 20px;
+    margin-left:20px;
+}
+
+
+@media only screen and (min-width:100px) and (max-width:991px) {
+    .txtBtn {
+        font-size: 20px;
+        margin-top:5px;
+    }
+}
+
+@media only screen and (min-width:100px) and (max-width:551px) {
+
+    .botonesNavegacion {
+        margin-top: 190px;
+    }
+
+    .logoMined {
+        height: 30px;
+        width: 80px;
+    }
+
+    .logoGob {
+        height: 40px;
+        width: 90px;
+    }
+
+    .logoCNU {
+        height: 40px;
+        width: 120px;
+    }
+
+    .lnkPaginaPrincipal {
+        display: none;
+    }
+
+    .tituloBusquedaInteractiva {
+        font-size: 10px;
+    }
+
+    .box {
+        margin-top: -25px;
+    }
+    .intro{
+        margin-right:10px;
+    }
+
+}
+    /*Estilos de los Mapas*/
+
+    @font-face {
+        font-family: 'CopperplateGothic-Bold';
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .text {
+        font-family: 'CopperplateGothic-Bold';
+        font-size: 40px;
+        fill: #000000;
+    }
+
+    .textWhite {
+        fill: white;
+    }
+
+    .textSmall {
+        font-size: 25px;
+    }
+
+    .text26px {
+        font-size: 26px;
+    }
+
+    .text28px {
+        font-size: 28px;
+    }
+
+    .text30px {
+        font-size: 30px;
+    }
+
+    .text32px {
+        font-size: 32px;
+    }
+
+    .text35px {
+        font-size: 35px;
+    }
+
+    .text36px {
+        font-size: 36px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+        a:hover .poly {
+            fill: lime;
+        }
+
+        a:hover .textWhite {
+            fill: #000000;
+        }
+
+    .marcador {
+        display: none;
+    }
+
+    a:hover .marcador {
+        display: block;
+    }
+
+    .Capital {
+        fill: none;
+        stroke: #000000;
+        stroke-width: 2;
+        stroke-miterlimit: 10;
+    }
+
+    .CabeceraDepartamentalBlack {
+        fill: none;
+        stroke: #000000;
+        stroke-width: 4;
+        stroke-miterlimit: 10;
+    }
+
+    .CabeceraDepartamentalWhite {
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-width: 4;
+        stroke-miterlimit: 10;
+    }
+
+    .flecha {
+        fill: none;
+        stroke: #000000;
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+    }
+
+
+    .row-mapa {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    align-content: stretch;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+
+@media only screen and (min-width: 200px) and (max-width: 650px) {
+
+    .titulo_encabezado {
+        font-family: "Monserrat Bold paleta";
+        color: #00aeef !important;
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    .descripcion_cuerpo {
+        font-size: 15px;
+    }
+
+    .justificar_texto {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    #MapaNicaragua {
+        width: 100%;
+    }
+
+    #myChart {
+        margin-top: -40px;
+    }
+
+    #chartGenero {
+        margin-top: 20px;
+    }
+
+    #chartRuralUrbano {
+        display: inline !important;
+    }
+
+    #container_estadisticas {
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+
+    #section_4 {
+        display: block;
+        margin-top: 20px;
+    }
+
+    #section_estadistica {
+        display: inline;
+    }
+
+    #container_descripcion {
+        padding-left: 1%;
+        padding-right: 1%;
+        border-bottom: #f9f9f9 10px solid;
+    }
+
+    #id_descripcion {
+        font-size: 18px;
+    }
+
+    #id_description_body {
+        font-size: 14px !important;
+    }
+
+    #container_ce_pd {
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+
+    #chartPoblacionDocenteSubSistemas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #chartPoblacionDocenteGenero {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #container_poblacion_docente {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    #img_sear, #img_mined, #img_inatec, #img_cnu {
+        width: 220px !important;
+    }
+
+    #charCentrosEducativos {
+        width: 80% !important;
+        height: auto !important;
+        display: inline-flex !important;
+    }
+}

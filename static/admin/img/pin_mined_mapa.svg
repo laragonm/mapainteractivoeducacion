@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 342 501" style="enable-background:new 0 0 342 501;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.05;}
+	.st1{fill:#008AB5;}
+	.st2{fill:#00AEEF;}
+	.st3{fill:#43DCFF;}
+	.st4{fill:#961864;}
+	.st5{fill:#E00C7D;}
+	.st6{fill:#F25AB8;}
+	.st7{fill:#022456;}
+	.st8{fill:#043284;}
+	.st9{fill:#1A58A3;}
+</style>
+<g id="pin_x5F_mined_x5F_mapa">
+	<ellipse class="st0" cx="177.89" cy="484.91" rx="85.43" ry="15.59"/>
+	<g>
+		<g>
+			<path class="st1" d="M26.48,205.3c0,0,103.01,58.53,138.22,234.42c2.87,14.34,22.83,15.6,27.49,1.74
+				c26.58-79.18,79.42-218,144.65-292.96"/>
+			<ellipse class="st1" cx="178.23" cy="168.3" rx="162.89" ry="163.5"/>
+			<ellipse class="st2" cx="163.77" cy="164" rx="162.89" ry="163.5"/>
+			<path class="st2" d="M12.88,205.3c0,0,107.81,56.16,145.68,227.14c3.16,14.27,23.12,14.99,27.09,0.92
+				c22.72-80.55,68.58-214.44,137.59-284.86"/>
+		</g>
+		<g>
+			<ellipse class="st2" cx="163.77" cy="164.86" rx="136.75" ry="137.25"/>
+			<path class="st3" d="M163.77,312.43c-81.07,0-147.04-66.2-147.04-147.58S82.69,17.28,163.77,17.28S310.8,83.48,310.8,164.86
+				S244.84,312.43,163.77,312.43z M163.77,37.93c-69.73,0-126.46,56.94-126.46,126.92s56.73,126.92,126.46,126.92
+				s126.46-56.94,126.46-126.92S233.5,37.93,163.77,37.93z"/>
+		</g>
+	</g>
+</g>
+</svg>

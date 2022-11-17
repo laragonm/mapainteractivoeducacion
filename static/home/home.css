@@ -1,0 +1,454 @@
+/*#id_descripcion, #id_descripcion_estadistica {
+    font-weight: bold;
+    font-size: 35px;
+    color: #0097db !important;
+    font-family: Montserrat, sans-serif;
+}*/
+
+/***** TITULOS, ENCABEZADOS *****/
+#id_description_body {
+    color: #767676 !important;
+    font-size: 18px !important;
+    font-family: Roboto, sans-serif;
+    margin-top: 15px;
+}
+
+.encabezado_categoria {
+    background-color: #167210;
+    color: white;
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 0px;
+    border-radius: 2px;
+    font-family: "Monserrat Bold paleta";
+    font-size: 20px !important;
+}
+
+#id_description_body {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+/***** CONTAINER *****/
+
+#container_estadisticas {
+    padding-left: 6%;
+    padding-right: 12%;
+    margin-top: -30px;
+}
+
+#container_estadisticas_dos {
+    padding-left: 10%;
+    padding-right: 15%;
+}
+
+#container_descripcion {
+    padding-left: 20%;
+    padding-right: 20%;
+    border-bottom: #f9f9f9 10px solid;
+}
+
+#container_ce_pd {
+    padding-left: 7%;
+    padding-right: 5%;
+    margin-top: 120px;
+}
+
+.container_border {
+    border-bottom: 10px solid #fbfafa;
+}
+
+#container_estadistica_principal {
+    margin-top: 50px !important;
+    transition: 1s linear;
+}
+
+#container_descripcion {
+    margin-top: 20px;
+}
+
+
+/***** LOGOS ******/
+
+#container_logos {
+    background-color: #FFFFFF !important;
+    /*height: 300px !important;*/
+}
+
+#img_mined {
+    width: 170px !important;
+}
+
+#img_cnu {
+    width: 200px;
+}
+
+#col_inatec {
+    display: flex;
+    justify-content: center;
+}
+
+
+/***** MAPA *****/
+
+#Nicaruaga {
+    -webkit-transition: all .9s ease;
+    /* Safari y Chrome */
+    -moz-transition: all .9s ease;
+    /* Firefox */
+    -o-transition: all .9s ease;
+    /* IE 9 */
+    -ms-transition: all .9s ease;
+    /* Opera */
+    width: 100%;
+}
+
+#MapaNicaragua {
+    width: 50%;
+}
+
+#Nicaruaga:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.de {
+    fill: #0e853c;
+    -webkit-transition: all .8s ease;
+    /* Safari y Chrome */
+    -moz-transition: all .8s ease;
+    /* Firefox */
+    -o-transition: all .8s ease;
+    /* IE 9 */
+    -ms-transition: all .8s ease;
+    /* Opera */
+    width: 100%;
+}
+
+.de:hover {
+    -webkit-transform: translate(1.5);
+    -moz-transform: translate(1.5);
+    -ms-transform: translate(1.5);
+    -o-transform: translate(1.5);
+    transform: translate(1.5);
+
+    fill: white;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.poly {
+    fill: #3996d2 !important;
+}
+
+#lnkRACCN .poly:hover {
+    fill: #e52f86 !important;
+}
+
+#lnkRACCS .poly:hover {
+    fill: #efa1c5 !important;
+}
+
+#lnkJinotega .poly:hover {
+    fill: #009849 !important;
+}
+
+#lnkNuevaSegovia .poly:hover {
+    fill: #9ac13a !important;
+}
+
+#lnkNuevaSegovia .poly:hover {
+    fill: #043284 !important;
+}
+
+#lnkChinandega .poly:hover {
+    fill: #42bded !important;
+}
+
+#lnkMatagalpa .poly:hover {
+    fill: #b68fc0 !important;
+}
+
+#lnkManagua .poly:hover {
+    fill: #f8e204 !important;
+}
+
+#lnkBoaco .poly:hover {
+    fill: #e5782a !important;
+}
+
+#lnkCarazo .poly:hover {
+    fill: #f9cc8b !important;
+}
+
+#lnkMasaya .poly:hover {
+    fill: #df147e !important;
+}
+
+#lnkGranada .poly:hover {
+    fill: #ba80b3 !important;
+}
+
+#lnkRivas .poly:hover {
+    fill: #e5495d !important;
+}
+
+#lnkRioSanJuan .poly:hover {
+    fill: #399736 !important;
+}
+
+#lagoManagua, #lagoNicaragua .poly:hover {
+    fill: #399736 !important;
+}
+
+#DepChontales .poly:hover {
+    fill: #8eb22c !important;
+}
+
+#lnkLeon .poly:hover {
+    fill: #9ac13a !important;
+}
+
+#lnkEsteli .poly:hover {
+    fill: #dc7e0c !important;
+}
+
+#lnkMadriz .poly:hover {
+    fill: #043284 !important;
+}
+
+#lnkNuevaSegovia .poly:hover {
+    fill: #9ac13a !important;
+}
+
+.poly:hover ~ g text * {
+    fill: green !important;
+}
+
+g text {
+    font-family: sans-serif;
+    font-size: 35px;
+    fill: white !important;
+    font-weight: bold;
+}
+
+
+/***** NOTICIA *****/
+
+.card_noticia {
+    margin-left: 0px;
+    margin-right: 0px;
+
+}
+
+
+/***** ESTADISTICAS *****/
+
+#charCentrosEducativos {
+    width: 300px !important;
+    height: auto !important;
+    display: inline-flex !important;
+}
+
+.hover_eventos:hover {
+    filter: brightness(0.5);
+    cursor: pointer;
+}
+
+#chartGenero {
+    /*width: 200px !important;
+    height: auto !important;*/
+}
+
+#chartRuralUrbano {
+    width: 100% !important;
+    height: auto !important;
+    margin-left: 30px;
+}
+
+#section_estadistica {
+    margin-top: 50px;
+}
+
+.btn_ver_mas {
+    background-color: #00aeef !important;
+}
+
+.linea {
+    margin-left: 1px;
+    margin-right: -1px;
+    border-bottom: 5px solid #167210
+}
+
+#chartPoblacionDocenteGenero {
+    /*width: 250px !important;*/
+    /*height: auto !important;*/
+}
+
+#chartGeneral {
+    width: 590px !important;
+}
+
+#chartEdadesMined {
+    width: 590px !important;
+}
+
+#chartEdadesInatec {
+    width: 590px !important;
+}
+
+#chartEdadesCnu {
+    width: 590px !important;
+}
+
+.col_centro_educativo {
+    max-width: 64%;
+}
+
+#container_poblacion_docente {
+    margin-left: -112px;
+}
+
+.col_chart_rural_urbano {
+    max-width: 22% !important;
+}
+
+.margen_centros_educativos {
+    margin-left: -300px;
+}
+
+
+/**********************************************************************************************************************/
+/********************************************** REPONSIVE MOBILE ******************************************************/
+/**********************************************************************************************************************/
+
+@media only screen and (min-width: 200px) and (max-width: 650px) {
+
+    .margen_centros_educativos {
+        margin-left: 20px !important;
+    }
+
+    .titulo_encabezado {
+        font-family: "Monserrat Bold paleta";
+        color: #00aeef !important;
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    .descripcion_cuerpo {
+        font-size: 15px;
+    }
+
+    .justificar_texto {
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    #MapaNicaragua {
+        width: 100%;
+    }
+
+    #myChart {
+        margin-top: -40px;
+    }
+
+    #chartGenero {
+        margin-top: 20px;
+    }
+
+    #chartRuralUrbano {
+        display: inline !important;
+        width: 100%;
+    }
+
+    #container_estadisticas {
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+
+    #section_4 {
+        display: block;
+        margin-top: 20px;
+    }
+
+    #section_estadistica {
+        display: inline;
+    }
+
+    #container_descripcion {
+        padding-left: 1%;
+        padding-right: 1%;
+        border-bottom: #f9f9f9 10px solid;
+    }
+
+    #id_descripcion {
+        font-size: 18px;
+    }
+
+    #id_description_body {
+        font-size: 14px !important;
+    }
+
+    #container_ce_pd {
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+
+    #chartPoblacionDocenteSubSistemas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #chartPoblacionDocenteGenero {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #container_poblacion_docente {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-left: 0px;
+    }
+
+    #img_sear, #img_mined, #img_inatec, #img_cnu {
+        width: 220px !important;
+    }
+
+    #charCentrosEducativos {
+        width: 80% !important;
+        height: auto !important;
+        display: inline-flex !important;
+    }
+
+    .col_centro_educativo {
+        max-width: 100%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    #chartGeneral {
+        width: 100% !important;
+    }
+
+
+    .col_chart_rural_urbano {
+        max-width: 80% !important;
+        margin-right: 2% !important;
+        margin-right: 2% !important;
+    }
+
+    .margen_centros_educativos {
+        margin-left: -143px;
+    }
+
+    #chartEdadesInatec {
+    width: 100% !important;
+}
+
+
+}

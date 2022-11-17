@@ -1,0 +1,192 @@
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #37517e;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #37517e;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+main {
+    grid-row-start: 1;
+}
+
+.footer {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #00AEEF !important;
+}
+
+.without-line {
+    text-decoration-line: none !important;
+}
+
+.carousel-item .img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.bg-celeste {
+    background-color: #00AEEF !important
+}
+
+a.bg-celeste:focus, a.bg-celeste:hover, button.bg-celeste:focus, button.bg-celeste:hover {
+    background-color: #00AEEF !important
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+    color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link.disabled {
+    color: gray;
+}
+
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
+    color: white;
+}
+
+.btn-outline-celeste {
+    color: #00AEEF;
+    background-color: transparent;
+    background-image: none;
+    border-color: #00AEEF
+}
+
+.btn-outline-celeste:hover {
+    color: #fff;
+    background-color: #00AEEF;
+    border-color: #00AEEF
+}
+
+.btn-outline-celeste.focus, .btn-outline-celeste:focus {
+    box-shadow: 0 0 0 .2rem rgba(23, 162, 184, .5)
+}
+
+.btn-outline-celeste.disabled, .btn-outline-celeste:disabled {
+    color: #00AEEF;
+    background-color: transparent
+}
+
+.btn-outline-celeste:not(:disabled):not(.disabled).active, .btn-outline-celeste:not(:disabled):not(.disabled):active, .show > .btn-outline-celeste.dropdown-toggle {
+    color: #fff;
+    background-color: #00AEEF;
+    border-color: #00AEEF
+}
+
+.btn-outline-celeste:not(:disabled):not(.disabled).active:focus, .btn-outline-celeste:not(:disabled):not(.disabled):active:focus, .show > .btn-outline-celeste.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(23, 162, 184, .5)
+}
+
+/*----------------TIPOGRAFIAS-------------------------*/
+@font-face {
+    font-family: "Nova";
+    src: url("../fonts/ProximaNova-Light.otf");
+}
+
+@font-face {
+    font-family: "SerifBold";
+    src: url("../fonts/serif-lt-bold.otf");
+}
+
+@font-face {
+    font-family: "SerifBook";
+    src: url("../fonts/serif-lt-book.otf")
+}
+
+.titulo {
+    font-family: "SerifBold";
+}
+
+.subtitulo {
+    font-family: "SerifBook";
+}
+
+.parrafos {
+    font-family: "Nova";
+}
+
+html, body {
+    font-family: "Nova";
+}
+
+label, input {
+    font-family: "Nova";
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.section-heading {
+    font-weight: bold;
+}
+
+.text-tittle {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+}

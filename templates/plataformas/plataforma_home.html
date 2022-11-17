@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load static thumbnail %}
+{% block  slider %}
+    <section id="main-banner-area">
+        <img class="img-movil card-img-top" src="{{ bannerPlat.banner_plataforma.url }}" alt="Card image cap">
+
+    </section>
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static '../static/home/home.css' %}">
+    <link rel="stylesheet" href="{% static '../static/home/responsive.css' %}">
+     <link rel="stylesheet" href="{% static '../static/home/custom.css' %}">
+{% endblock %}
+{% block context %}
+    <main id="main">
+         <section style="margin-top: 70px; margin-bottom: 70px" id="about2" class="about2">
+            {% include 'home/logo_subsistemas.html' %}
+        </section>
+         <div class="container-fluid paneles" >
+          <div class="encabezado text-center">
+            <h2 class="titulo_encabezado text-uppercase"><a>Plataformas virtuales</a></h2>
+          </div>
+         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" >
+          {% for plataforma in plataformas %}
+              <div style="margin-top: 3%!important;" class="col-xs-12 col-sm-3 col-md-3 panelcolumn " data-aos="fade-up">
+                    <div class="panel">
+                      <div   class="panel-body">
+                        {% thumbnail plataforma.imagen "351x170" crop="center" as im %}
+                        <a href="{% url 'home:plataformas_detalles' plataforma.pk %}"><img  src="{{ im.url }}"  class="img-responsive img-ofertas"> </a>
+                      </div>
+                      <div class="panel-footer" style="overflow-wrap: break-word !important;">
+                       <a title="Ver mas" href="{% url 'home:plataformas_detalles' plataforma.pk %}">
+                           <div class="circle blue">
+                               <i style="" class="fa fa-plus"></i>
+                             </div>
+                       </a>
+                        <h1 style="margin: 3%;" class="titulooferta descripcion_cuerpo"><a href="{% url 'home:plataformas_detalles' plataforma.pk %}">{{ plataforma.id_clasificacion }}<br>{{ plataforma.nombre }}</a></h1>
+                       <div style="margin: 5%">
+                           <p class="descripcion_lg">{{ plataforma.descripcion|safe|truncatewords:20 }}</p>
+                       </div>
+                      </div>
+                      <div class="panel-footer2 celeste">
+
+                      </div>
+                    </div>
+              </div><br>
+          {% endfor %}
+           </div>
+        </div>
+
+    </main>
+
+{% endblock %}
